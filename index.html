@@ -175,8 +175,7 @@
             <h1>🇩🇪 Luyện Thi Nói (Sprechen)</h1>
             <p style="text-align: center;">Chọn phần thi để bốc đề:</p>
             <div class="menu-buttons">
-                <button class="btn-teil2" onclick="generateTeil2Links(1, 10)">Bốc TEIL 2 - Đề 1-10</button>
-                <button class="btn-teil2" onclick="generateTeil2Links(11, 20)">Bốc TEIL 2 - Đề 11-20</button>
+                <button class="btn-teil2" onclick="generateTeil2Links()">Bốc TEIL 2 (Tranh luận)</button>
                 <button class="btn-teil3" onclick="randomTeil3()">Bốc TEIL 3 (Lên kế hoạch)</button>
             </div>
 
@@ -536,18 +535,10 @@
             }
         };
 
-        function generateTeil2Links(startId, endId) {
-            // Lọc các topic theo khoảng ID được chỉ định
-            const filteredTopics = dataTeil2.filter(t => t.id >= startId && t.id <= endId);
-
-            if (filteredTopics.length === 0) {
-                alert('Không có đề nào trong khoảng này!');
-                return;
-            }
-
-            // Chọn ngẫu nhiên 1 topic từ danh sách đã lọc
-            const randomIndex = Math.floor(Math.random() * filteredTopics.length);
-            const topic = filteredTopics[randomIndex];
+        function generateTeil2Links() {
+            // Chọn ngẫu nhiên 1 topic
+            const randomIndex = Math.floor(Math.random() * dataTeil2.length);
+            const topic = dataTeil2[randomIndex];
             const id = topic.id;
 
             // Lấy URL hiện tại (bỏ phần query cũ)
